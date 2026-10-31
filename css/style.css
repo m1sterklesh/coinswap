@@ -421,9 +421,20 @@ body.bg--error::before {
 }
 
 .footnote {
+  max-width: 520px;
   margin: 20px 0 0;
   font-size: 13px;
+  line-height: 1.5;
   color: var(--text-dim);
+  text-align: center;
+}
+
+.footnote p {
+  margin: 0;
+}
+
+.footnote p + p {
+  margin-top: 4px;
 }
 
 .footnote a {
