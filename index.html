@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CoinSwap — конвертер валют</title>
+  <meta name="description" content="CoinSwap — быстрый конвертер валют по актуальным курсам.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <main class="page">
+    <section class="card" aria-labelledby="title">
+      <header class="card__header">
+        <h1 class="card__title" id="title">
+          <span class="card__logo" aria-hidden="true">¤</span>
+          CoinSwap
+        </h1>
+        <p class="card__subtitle">Конвертер валют по актуальным курсам</p>
+      </header>
+
+      <form class="form" id="converter-form" novalidate>
+        <div class="field">
+          <label class="field__label" for="amount">Сумма</label>
+          <input
+            class="field__input field__input--amount"
+            type="number"
+            id="amount"
+            name="amount"
+            min="0"
+            step="0.01"
+            inputmode="decimal"
+            placeholder="0.00"
+            autocomplete="off"
+            required
+          >
+        </div>
+
+        <div class="currencies">
+          <div class="field">
+            <label class="field__label" for="from">Из валюты</label>
+            <select class="field__select" id="from" name="from" disabled>
+              <option>Загрузка…</option>
+            </select>
+          </div>
+
+          <button
+            class="swap"
+            type="button"
+            id="swap-btn"
+            aria-label="Поменять валюты местами"
+            title="Поменять местами"
+          >⇄</button>
+
+          <div class="field">
+            <label class="field__label" for="to">В валюту</label>
+            <select class="field__select" id="to" name="to" disabled>
+              <option>Загрузка…</option>
+            </select>
+          </div>
+        </div>
+
+        <button class="btn" type="submit" id="convert-btn" disabled>
+          <span class="btn__spinner" aria-hidden="true"></span>
+          <span class="btn__text">Конвертировать</span>
+        </button>
+      </form>
+
+      <div class="status" id="status" role="status" aria-live="polite"></div>
+
+      <section class="result" id="result" aria-live="polite" hidden>
+        <h2 class="visually-hidden">Результат конвертации</h2>
+        <p class="result__main" id="result-main"></p>
+        <p class="result__rate" id="result-rate"></p>
+      </section>
+    </section>
+
+    <p class="footnote">Курсы: <a href="https://www.exchangerate-api.com" target="_blank" rel="noopener">ExchangeRate-API</a></p>
+  </main>
+
+  <script src="js/api.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
